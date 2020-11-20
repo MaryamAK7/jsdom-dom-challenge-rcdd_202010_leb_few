@@ -13,14 +13,18 @@
      l++;
     })
   document.getElementById("pause").addEventListener("click",  function(){
-    clearInterval(interval);
+    time1=counter.innerText;
     document.getElementById("pause").innerText="resume";
     document.getElementById("pause").setAttribute("id","resume");
     document.getElementById("plus").disabled=true;
     document.getElementById("minus").disabled=true;
     document.getElementById("heart").disabled=true;
-    document.getElementById("submit").disabled=true;
+    document.getElementById("submit").disabled=true;clearInterval(interval);
+
     document.getElementById("resume").addEventListener("click",  function(){
+      i=time1;
+    setInterval(function(){counter.innerText=`${i}`;i++;}, 1000);
+    
     document.getElementById("resume").innerText="pause";
     document.getElementById("resume").setAttribute("id","pause");
     document.getElementById("plus").disabled=false;
@@ -28,10 +32,8 @@
     document.getElementById("heart").disabled=false;
     document.getElementById("submit").disabled=false;
     })
+   })
     
-  })
-    
-   
   document.getElementById("submit").addEventListener("click",function(){
     event.preventDefault();
    let value =document.getElementById("comment-input").value;
